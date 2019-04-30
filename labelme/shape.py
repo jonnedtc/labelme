@@ -33,7 +33,7 @@ class Shape(object):
     vertex_fill_color = DEFAULT_VERTEX_FILL_COLOR
     hvertex_fill_color = DEFAULT_HVERTEX_FILL_COLOR
     point_type = P_ROUND
-    point_size = 8
+    point_size = 6
     scale = 1.0
 
     def __init__(self, label=None, line_color=None, shape_type=None):
@@ -106,8 +106,8 @@ class Shape(object):
             color = self.select_line_color \
                 if self.selected else self.line_color
             pen = QtGui.QPen(color)
-            # Try using integer sizes for smoother drawing(?)
-            pen.setWidth(max(1, int(round(2.0 / self.scale))))
+            pen.setCosmetic(True)
+            pen.setWidth(3)
             painter.setPen(pen)
 
             line_path = QtGui.QPainterPath()
